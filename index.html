@@ -1,0 +1,1455 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Super Mock Test — Legal Aptitude | Panjab University Entrance</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a0f2e;
+    --navy-mid: #111836;
+    --navy-light: #1a2547;
+    --gold: #c9a84c;
+    --gold-light: #e8c96b;
+    --gold-pale: #f5e4a8;
+    --cream: #faf6ed;
+    --cream-dark: #f0e8d5;
+    --red: #c0392b;
+    --red-soft: #e74c3c;
+    --green: #1a7a4a;
+    --green-soft: #27ae60;
+    --text-on-navy: #d4cdb8;
+    --border-gold: rgba(201,168,76,0.3);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--navy);
+    color: var(--cream);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  /* ===== SCREENS ===== */
+  .screen { display: none; }
+  .screen.active { display: flex; }
+
+  /* ===== LANDING ===== */
+  #screen-landing {
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: radial-gradient(ellipse at 60% 20%, #1e2d5a 0%, var(--navy) 60%);
+    padding: 2rem;
+  }
+  #screen-landing::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 39px,
+      rgba(201,168,76,0.04) 39px, rgba(201,168,76,0.04) 40px
+    ),
+    repeating-linear-gradient(
+      90deg, transparent, transparent 39px,
+      rgba(201,168,76,0.04) 39px, rgba(201,168,76,0.04) 40px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+  .landing-card {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    width: 100%;
+    background: var(--navy-mid);
+    border: 1px solid var(--border-gold);
+    border-top: 3px solid var(--gold);
+    padding: 3rem 3.5rem;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.1);
+    animation: fadeUp 0.6s ease;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(24px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+  .emblem {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .emblem-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1rem;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    font-size: 1.6rem;
+  }
+  .test-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    text-align: center;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .test-subtitle {
+    font-size: 0.82rem;
+    color: rgba(212,205,184,0.6);
+    text-align: center;
+    margin-top: 0.35rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 1.8rem 0;
+    opacity: 0.5;
+  }
+  .meta-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .meta-item {
+    text-align: center;
+    padding: 0.8rem;
+    background: var(--navy-light);
+    border: 1px solid rgba(201,168,76,0.15);
+  }
+  .meta-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--gold-light);
+    font-weight: 700;
+  }
+  .meta-lbl { font-size: 0.68rem; color: rgba(212,205,184,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.2rem; font-family: 'JetBrains Mono', monospace; }
+
+  label.field-label {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(212,205,184,0.6);
+    margin-bottom: 0.4rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  input[type=text], input[type=email] {
+    width: 100%;
+    background: var(--navy);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-bottom: 2px solid var(--gold);
+    color: var(--cream);
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 1rem;
+  }
+  input[type=text]:focus, input[type=email]:focus {
+    border-color: var(--gold-light);
+    border-bottom-color: var(--gold-light);
+    background: var(--navy-light);
+  }
+  .btn-primary {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 0.5rem;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+  .disclaimer {
+    font-size: 0.72rem;
+    color: rgba(212,205,184,0.35);
+    text-align: center;
+    margin-top: 1rem;
+    line-height: 1.5;
+  }
+
+  /* ===== INSTRUCTIONS ===== */
+  #screen-instructions {
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3rem 1.5rem;
+    background: radial-gradient(ellipse at 40% 30%, #1e2d5a 0%, var(--navy) 70%);
+  }
+  .instr-card {
+    max-width: 700px;
+    width: 100%;
+    background: var(--navy-mid);
+    border: 1px solid var(--border-gold);
+    border-top: 3px solid var(--gold);
+    padding: 2.5rem 3rem;
+    animation: fadeUp 0.5s ease;
+  }
+  .instr-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+  }
+  .instr-list { list-style: none; }
+  .instr-list li {
+    display: flex;
+    gap: 0.8rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+    font-size: 0.92rem;
+    color: var(--text-on-navy);
+    line-height: 1.5;
+  }
+  .instr-list li:last-child { border-bottom: none; }
+  .instr-num {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    background: var(--gold);
+    color: var(--navy);
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 0.15rem;
+  }
+  .marking-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: rgba(201,168,76,0.2);
+    margin: 1.5rem 0;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+  .marking-cell {
+    padding: 0.8rem;
+    background: var(--navy-mid);
+    text-align: center;
+  }
+  .marking-cell .val { font-family: 'Playfair Display', serif; font-size: 1.2rem; }
+  .marking-cell .lbl { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(212,205,184,0.5); margin-top: 0.2rem; font-family: 'JetBrains Mono', monospace; }
+  .text-green { color: var(--green-soft); }
+  .text-red { color: var(--red-soft); }
+  .text-gold { color: var(--gold-light); }
+
+  /* ===== EXAM ===== */
+  #screen-exam {
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  .exam-header {
+    background: var(--navy-mid);
+    border-bottom: 2px solid rgba(201,168,76,0.3);
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  .exam-header-left { display: flex; align-items: center; gap: 1rem; }
+  .exam-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--gold-light);
+    font-weight: 700;
+  }
+  .candidate-badge {
+    font-size: 0.7rem;
+    color: rgba(212,205,184,0.5);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .timer-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--navy-light);
+    border: 1px solid var(--border-gold);
+    padding: 0.4rem 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    letter-spacing: 0.05em;
+  }
+  .timer-box.warning { border-color: #f39c12; color: #f39c12; animation: pulse 1s infinite; }
+  .timer-box.danger { border-color: var(--red-soft); color: var(--red-soft); animation: pulse 0.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+  .timer-icon { font-size: 0.9rem; }
+
+  .exam-body {
+    display: flex;
+    flex: 1;
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  .question-panel { flex: 1; min-width: 0; }
+  .sidebar { width: 260px; flex-shrink: 0; }
+
+  /* Section tabs */
+  .section-tabs {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .section-tab {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: transparent;
+    color: rgba(212,205,184,0.5);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .section-tab:hover { border-color: var(--gold); color: var(--gold-light); }
+  .section-tab.active { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 600; }
+
+  /* Question card */
+  .question-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-left: 3px solid var(--gold);
+    padding: 1.8rem 2rem;
+    margin-bottom: 1rem;
+    animation: fadeQ 0.25s ease;
+  }
+  @keyframes fadeQ { from{opacity:0;transform:translateX(8px)} to{opacity:1;transform:translateX(0)} }
+  .q-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+  .q-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+  }
+  .q-section-tag {
+    font-size: 0.62rem;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: rgba(212,205,184,0.5);
+    padding: 0.15rem 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .q-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  @media(max-width: 600px) { .options-grid { grid-template-columns: 1fr; } }
+  .option-btn {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.8rem 1rem;
+    background: var(--navy);
+    border: 1px solid rgba(201,168,76,0.12);
+    color: var(--text-on-navy);
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s;
+    line-height: 1.4;
+  }
+  .option-btn:hover:not(.selected) {
+    border-color: rgba(201,168,76,0.4);
+    background: var(--navy-light);
+  }
+  .option-btn.selected {
+    background: rgba(201,168,76,0.12);
+    border-color: var(--gold);
+    color: var(--gold-pale);
+  }
+  .option-label {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    color: var(--gold);
+    margin-top: 0.05rem;
+  }
+  .option-btn.selected .option-label {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: var(--gold);
+  }
+  /* Nav row */
+  .q-nav-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .btn-nav {
+    padding: 0.55rem 1.3rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    border: 1px solid var(--border-gold);
+    background: transparent;
+    color: var(--text-on-navy);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-nav:hover { border-color: var(--gold); color: var(--gold-light); }
+  .btn-nav:disabled { opacity: 0.3; cursor: default; }
+  .btn-nav.primary {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: var(--gold);
+    font-weight: 600;
+  }
+  .btn-nav.primary:hover { background: var(--gold-light); }
+  .btn-clear {
+    padding: 0.4rem 0.9rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    border: 1px solid rgba(231,76,60,0.3);
+    background: transparent;
+    color: rgba(231,76,60,0.6);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-clear:hover { border-color: var(--red-soft); color: var(--red-soft); }
+
+  /* Sidebar */
+  .sidebar-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .sidebar-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .score-live {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .score-cell {
+    text-align: center;
+    padding: 0.5rem;
+    background: var(--navy);
+  }
+  .score-val { font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+  .score-lbl { font-size: 0.6rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; color: rgba(212,205,184,0.4); margin-top: 0.1rem; }
+
+  /* Question palette */
+  .palette-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.8rem;
+  }
+  .legend-item { display: flex; align-items: center; gap: 0.3rem; font-size: 0.6rem; font-family: 'JetBrains Mono', monospace; color: rgba(212,205,184,0.5); text-transform: uppercase; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+  .dot-answered { background: var(--gold); }
+  .dot-current { background: var(--gold-light); border: 1px solid #fff; }
+  .dot-unanswered { background: var(--navy); border: 1px solid rgba(201,168,76,0.2); }
+
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 3px;
+  }
+  .pal-btn {
+    aspect-ratio: 1;
+    background: var(--navy);
+    border: 1px solid rgba(201,168,76,0.15);
+    color: rgba(212,205,184,0.4);
+    font-size: 0.6rem;
+    font-family: 'JetBrains Mono', monospace;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.1s;
+  }
+  .pal-btn:hover { border-color: var(--gold); color: var(--gold-light); }
+  .pal-btn.answered { background: rgba(201,168,76,0.2); border-color: var(--gold); color: var(--gold-light); }
+  .pal-btn.current { background: var(--gold); color: var(--navy); font-weight: 700; }
+
+  .submit-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+  .submit-btn:hover { background: var(--gold-light); }
+
+  /* ===== MODAL ===== */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+  .modal-overlay.show { display: flex; }
+  .modal-box {
+    background: var(--navy-mid);
+    border: 1px solid var(--border-gold);
+    border-top: 3px solid var(--gold);
+    padding: 2.5rem;
+    max-width: 460px;
+    width: 90%;
+    animation: fadeUp 0.3s ease;
+  }
+  .modal-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+  .modal-box p { color: var(--text-on-navy); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  .modal-stats { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .modal-stat { flex: 1; text-align: center; padding: 0.7rem; background: var(--navy); }
+  .modal-stat .v { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+  .modal-stat .l { font-size: 0.62rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; color: rgba(212,205,184,0.4); margin-top: 0.1rem; }
+  .modal-btns { display: flex; gap: 0.75rem; }
+  .btn-modal { flex: 1; padding: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; border: 1px solid var(--border-gold); background: transparent; color: var(--text-on-navy); cursor: pointer; transition: all 0.15s; }
+  .btn-modal:hover { border-color: var(--gold); color: var(--gold-light); }
+  .btn-modal.confirm { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 700; }
+  .btn-modal.confirm:hover { background: var(--gold-light); }
+
+  /* ===== RESULTS ===== */
+  #screen-results {
+    min-height: 100vh;
+    flex-direction: column;
+    background: radial-gradient(ellipse at 50% 0%, #1a2547 0%, var(--navy) 60%);
+    padding: 2rem 1.5rem;
+    align-items: center;
+  }
+  .results-wrap { max-width: 900px; width: 100%; }
+  .results-header {
+    background: var(--navy-mid);
+    border: 1px solid var(--border-gold);
+    border-top: 4px solid var(--gold);
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .results-header::before {
+    content: '⚖';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.03;
+    top: -1rem;
+    right: 1rem;
+    pointer-events: none;
+  }
+  .results-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--gold-light);
+    margin-bottom: 0.4rem;
+  }
+  .candidate-info { font-size: 0.8rem; color: rgba(212,205,184,0.5); font-family: 'JetBrains Mono', monospace; margin-bottom: 1.5rem; }
+  .score-big-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.2);
+    margin-bottom: 1.5rem;
+  }
+  @media(max-width:600px) { .score-big-grid { grid-template-columns: 1fr 1fr; } }
+  .score-big-cell {
+    background: var(--navy-mid);
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .score-big-val { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; }
+  .score-big-lbl { font-size: 0.65rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(212,205,184,0.4); margin-top: 0.3rem; }
+  .percentile-bar-wrap { margin: 0 auto; max-width: 400px; margin-bottom: 1.5rem; }
+  .percentile-bar-bg { height: 6px; background: var(--navy-light); position: relative; border-radius: 3px; overflow: hidden; }
+  .percentile-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius: 3px; transition: width 1s ease; }
+  .percentile-label { display: flex; justify-content: space-between; font-size: 0.68rem; font-family: 'JetBrains Mono', monospace; color: rgba(212,205,184,0.4); margin-top: 0.3rem; }
+  .verdict-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: 1px solid;
+    font-weight: 700;
+  }
+  .verdict-excellent { color: var(--green-soft); border-color: var(--green-soft); background: rgba(39,174,96,0.08); }
+  .verdict-good { color: var(--gold-light); border-color: var(--gold); background: rgba(201,168,76,0.08); }
+  .verdict-average { color: #f39c12; border-color: #f39c12; background: rgba(243,156,18,0.08); }
+  .verdict-below { color: var(--red-soft); border-color: var(--red-soft); background: rgba(231,76,60,0.08); }
+
+  /* Section breakdown */
+  .section-breakdown {
+    background: var(--navy-mid);
+    border: 1px solid var(--border-gold);
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .section-breakdown h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .section-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 80px;
+    gap: 0.5rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.06);
+    align-items: center;
+    font-size: 0.82rem;
+  }
+  .section-row:last-child { border-bottom: none; }
+  .section-row.header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(212,205,184,0.4);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  @media(max-width:600px) { .section-row { grid-template-columns: 2fr 1fr 1fr; } .section-row > *:nth-child(4), .section-row > *:nth-child(5) { display: none; } }
+  .mini-bar { height: 4px; background: var(--navy-light); border-radius: 2px; overflow: hidden; }
+  .mini-bar-fill { height: 100%; background: var(--gold); border-radius: 2px; }
+
+  /* Review table */
+  .review-section {
+    background: var(--navy-mid);
+    border: 1px solid var(--border-gold);
+    margin-bottom: 1.5rem;
+  }
+  .review-header {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .review-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+  }
+  .filter-tabs { display: flex; gap: 0.3rem; }
+  .filter-tab {
+    padding: 0.25rem 0.7rem;
+    font-size: 0.65rem;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: transparent;
+    color: rgba(212,205,184,0.4);
+    cursor: pointer;
+  }
+  .filter-tab.active { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+
+  .review-item {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(201,168,76,0.06);
+  }
+  .review-item:last-child { border-bottom: none; }
+  .review-item.correct-row { border-left: 3px solid var(--green-soft); }
+  .review-item.wrong-row { border-left: 3px solid var(--red-soft); }
+  .review-item.skip-row { border-left: 3px solid rgba(212,205,184,0.2); }
+  .review-q-num { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--gold); margin-bottom: 0.3rem; text-transform: uppercase; }
+  .review-q-text { font-size: 0.85rem; color: var(--cream); margin-bottom: 0.5rem; line-height: 1.5; }
+  .review-answers { display: flex; gap: 1.5rem; font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; }
+  .review-your { color: var(--red-soft); }
+  .review-correct { color: var(--green-soft); }
+  .review-your.match { color: var(--green-soft); }
+  .review-skipped { color: rgba(212,205,184,0.3); }
+
+  .feedback-card {
+    background: var(--navy-mid);
+    border: 1px solid var(--border-gold);
+    border-left: 4px solid var(--gold);
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .feedback-card h3 { font-family: 'Playfair Display', serif; color: var(--gold-light); margin-bottom: 0.8rem; }
+  .feedback-card p { color: var(--text-on-navy); font-size: 0.88rem; line-height: 1.7; }
+
+  .results-footer { text-align: center; padding: 2rem 0; }
+  .btn-retake {
+    display: inline-block;
+    padding: 0.85rem 2.5rem;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-retake:hover { background: var(--gold-light); }
+
+  /* Hidden by JS */
+  .review-item.hidden { display: none; }
+
+  @media(max-width: 900px) {
+    .exam-body { flex-direction: column; padding: 1rem; }
+    .sidebar { width: 100%; }
+    .palette-grid { grid-template-columns: repeat(10, 1fr); }
+    .landing-card, .instr-card { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== SCREEN: LANDING ==================== -->
+<div id="screen-landing" class="screen active">
+  <div class="landing-card">
+    <div class="emblem">
+      <div class="emblem-icon">⚖️</div>
+      <h1 class="test-title">Super Mock Test<br>Legal Aptitude</h1>
+      <p class="test-subtitle">Panjab University Entrance Examination</p>
+    </div>
+    <div class="divider"></div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-val text-gold">100</div><div class="meta-lbl">Questions</div></div>
+      <div class="meta-item"><div class="meta-val text-gold">90</div><div class="meta-lbl">Minutes</div></div>
+      <div class="meta-item"><div class="meta-val text-gold">100</div><div class="meta-lbl">Max Marks</div></div>
+    </div>
+    <label class="field-label">Full Name *</label>
+    <input type="text" id="inp-name" placeholder="Enter your full name" autocomplete="name">
+    <label class="field-label">Email Address *</label>
+    <input type="email" id="inp-email" placeholder="Enter your email address" autocomplete="email">
+    <button class="btn-primary" onclick="startInstructions()">Proceed to Instructions →</button>
+    <p class="disclaimer">Your email is collected for result delivery only. This is a simulation — no data is transmitted to any server.</p>
+  </div>
+</div>
+
+<!-- ==================== SCREEN: INSTRUCTIONS ==================== -->
+<div id="screen-instructions" class="screen">
+  <div class="instr-card">
+    <h2>📋 Examination Instructions</h2>
+    <div class="marking-box">
+      <div class="marking-cell"><div class="val text-green">+1</div><div class="lbl">Correct Answer</div></div>
+      <div class="marking-cell"><div class="val text-red">−0.25</div><div class="lbl">Wrong Answer</div></div>
+      <div class="marking-cell"><div class="val text-gold">0</div><div class="lbl">Unattempted</div></div>
+    </div>
+    <ul class="instr-list">
+      <li><span class="instr-num">1</span><span>The test consists of <strong>100 MCQ questions</strong> spread across 8 sections covering Legal Aptitude and General Awareness.</span></li>
+      <li><span class="instr-num">2</span><span>Total time allotted is <strong>90 minutes</strong>. The timer begins as soon as you click "Start Examination."</span></li>
+      <li><span class="instr-num">3</span><span>Each correct answer carries <strong>+1 mark</strong>. Each wrong answer carries a penalty of <strong>−0.25 marks</strong>. Unattempted questions carry <strong>zero marks</strong>.</span></li>
+      <li><span class="instr-num">4</span><span>No question is mandatory. You may skip any question and return to it using the question palette on the right.</span></li>
+      <li><span class="instr-num">5</span><span>You can <strong>change or clear your answer</strong> at any time before submitting.</span></li>
+      <li><span class="instr-num">6</span><span>Use the <strong>section tabs</strong> to jump between sections. The question palette shows answered (gold) vs unanswered questions.</span></li>
+      <li><span class="instr-num">7</span><span>The test <strong>auto-submits</strong> when the timer reaches zero. You can also submit manually using the Submit button.</span></li>
+      <li><span class="instr-num">8</span><span>After submission, a detailed performance report with section-wise analysis and answer review is displayed.</span></li>
+    </ul>
+    <div class="divider"></div>
+    <button class="btn-primary" onclick="startExam()">⚖ Start Examination</button>
+  </div>
+</div>
+
+<!-- ==================== SCREEN: EXAM ==================== -->
+<div id="screen-exam" class="screen">
+  <div class="exam-header">
+    <div class="exam-header-left">
+      <div>
+        <div class="exam-logo">⚖ Legal Aptitude Mock Test</div>
+        <div class="candidate-badge" id="hdr-candidate">Candidate: —</div>
+      </div>
+    </div>
+    <div class="timer-box" id="timer-display">
+      <span class="timer-icon">⏱</span>
+      <span id="timer-text">90:00</span>
+    </div>
+  </div>
+  <div class="exam-body">
+    <!-- Left: Question panel -->
+    <div class="question-panel">
+      <div class="section-tabs" id="section-tabs"></div>
+      <div id="question-display"></div>
+      <div class="q-nav-row">
+        <div style="display:flex;gap:0.5rem;">
+          <button class="btn-nav" id="btn-prev" onclick="navigate(-1)">← Prev</button>
+          <button class="btn-nav" id="btn-next" onclick="navigate(1)">Next →</button>
+        </div>
+        <div style="display:flex;gap:0.5rem;align-items:center;">
+          <button class="btn-clear" onclick="clearAnswer()">Clear Response</button>
+          <button class="btn-nav primary" onclick="saveAndNext()">Save & Next →</button>
+        </div>
+      </div>
+    </div>
+    <!-- Right: Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-title">Live Score Preview</div>
+        <div class="score-live">
+          <div class="score-cell"><div class="score-val text-green" id="live-correct">0</div><div class="score-lbl">Correct</div></div>
+          <div class="score-cell"><div class="score-val text-red" id="live-wrong">0</div><div class="score-lbl">Wrong</div></div>
+          <div class="score-cell"><div class="score-val text-gold" id="live-score">0.00</div><div class="score-lbl">Score</div></div>
+          <div class="score-cell"><div class="score-val" id="live-attempted">0</div><div class="score-lbl">Attempted</div></div>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">Question Palette</div>
+        <div class="palette-legend">
+          <div class="legend-item"><div class="legend-dot dot-answered"></div>Answered</div>
+          <div class="legend-item"><div class="legend-dot dot-current"></div>Current</div>
+          <div class="legend-item"><div class="legend-dot dot-unanswered"></div>Not Visited</div>
+        </div>
+        <div class="palette-grid" id="palette-grid"></div>
+      </div>
+      <button class="submit-btn" onclick="showSubmitModal()">Submit Paper ⟶</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MODAL: SUBMIT CONFIRM ==================== -->
+<div class="modal-overlay" id="submit-modal">
+  <div class="modal-box">
+    <h3>⚠ Submit Examination?</h3>
+    <p>Once submitted, you cannot change your answers. Please review your attempt summary below.</p>
+    <div class="modal-stats">
+      <div class="modal-stat"><div class="v text-green" id="mod-correct">0</div><div class="l">Correct</div></div>
+      <div class="modal-stat"><div class="v text-red" id="mod-wrong">0</div><div class="l">Wrong</div></div>
+      <div class="modal-stat"><div class="v" id="mod-skip">0</div><div class="l">Skipped</div></div>
+      <div class="modal-stat"><div class="v text-gold" id="mod-score">0</div><div class="l">Score</div></div>
+    </div>
+    <div class="modal-btns">
+      <button class="btn-modal" onclick="closeSubmitModal()">Review More</button>
+      <button class="btn-modal confirm" onclick="submitExam()">Confirm Submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN: RESULTS ==================== -->
+<div id="screen-results" class="screen">
+  <div class="results-wrap">
+    <div class="results-header">
+      <div class="results-title">📊 Performance Report</div>
+      <div class="candidate-info" id="res-candidate">—</div>
+      <div class="score-big-grid" id="score-big-grid">
+        <!-- Filled by JS -->
+      </div>
+      <div class="percentile-bar-wrap">
+        <div class="percentile-bar-bg"><div class="percentile-bar-fill" id="perc-bar" style="width:0%"></div></div>
+        <div class="percentile-label"><span>0%</span><span id="perc-label">Score: 0%</span><span>100%</span></div>
+      </div>
+      <div id="verdict-badge-wrap"></div>
+    </div>
+
+    <!-- Section Breakdown -->
+    <div class="section-breakdown">
+      <h3>Section-wise Analysis</h3>
+      <div class="section-row header">
+        <div>Section</div><div>Score</div><div>Correct</div><div>Wrong</div><div>Accuracy</div>
+      </div>
+      <div id="section-analysis"></div>
+    </div>
+
+    <!-- Feedback Card -->
+    <div class="feedback-card" id="feedback-card">
+      <h3>🎯 Personalised Feedback</h3>
+      <p id="feedback-text">—</p>
+    </div>
+
+    <!-- Answer Review -->
+    <div class="review-section">
+      <div class="review-header">
+        <h3>Answer Review</h3>
+        <div class="filter-tabs">
+          <button class="filter-tab active" onclick="filterReview('all', this)">All</button>
+          <button class="filter-tab" onclick="filterReview('correct', this)">✓ Correct</button>
+          <button class="filter-tab" onclick="filterReview('wrong', this)">✗ Wrong</button>
+          <button class="filter-tab" onclick="filterReview('skip', this)">— Skipped</button>
+        </div>
+      </div>
+      <div id="review-list"></div>
+    </div>
+
+    <div class="results-footer">
+      <button class="btn-retake" onclick="retakeTest()">🔄 Retake Test</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const SECTIONS = [
+  { id: 0, name: "Constitutional Law", short: "Const.", range: [1, 15] },
+  { id: 1, name: "Jurisprudence", short: "Juris.", range: [16, 25] },
+  { id: 2, name: "Law of Torts", short: "Torts", range: [26, 40] },
+  { id: 3, name: "Law of Contract", short: "Contract", range: [41, 50] },
+  { id: 4, name: "Family Law", short: "Family", range: [51, 60] },
+  { id: 5, name: "Advanced Concepts", short: "Advanced", range: [61, 75] },
+  { id: 6, name: "Current Affairs", short: "Current", range: [76, 90] },
+  { id: 7, name: "Legal Reasoning", short: "Reasoning", range: [91, 100] }
+];
+
+const QUESTIONS = [
+  // Section I: Constitutional Law
+  { n:1, sec:0, q:"Who first proposed the idea of a Constituent Assembly for India?", opts:["Jawaharlal Nehru","Motilal Nehru","M. K. Gandhi","M. N. Roy"], ans:"D" },
+  { n:2, sec:0, q:"On what date was the historic 'Objective Resolution' proposed by Jawaharlal Nehru?", opts:["9 December, 1946","13 December, 1946","22 January, 1947","26 November, 1949"], ans:"B" },
+  { n:3, sec:0, q:"Which British government proposal suggested framing the Constitution of India by an elected Constituent Assembly?", opts:["Simon Commission","Government of India Act, 1935","Cripps Mission","Cabinet Mission Plan"], ans:"C" },
+  { n:4, sec:0, q:"Who was the first elected Chairman of the Constituent Assembly?", opts:["Dr. B.R. Ambedkar","Dr. Sachidanand Sinha","Dr. Rajendra Prasad","H.C. Mukherjee"], ans:"C" },
+  { n:5, sec:0, q:"How much time did the Constituent Assembly take to frame the Constitution of India?", opts:["2 years, 11 months, 18 days","2 years, 7 months, 23 days","3 years, 4 months, 14 days","3 years, 11 months, 5 days"], ans:"A" },
+  { n:6, sec:0, q:"The \"Basic Structure\" doctrine was first evolved in which landmark case?", opts:["Golaknath","Kesavananda Bharati","Minerva Mills","I.R. Coelho"], ans:"B" },
+  { n:7, sec:0, q:"Which Constitutional Amendment is known as the \"Mini Constitution\"?", opts:["42nd Amendment","44th Amendment","73rd Amendment","86th Amendment"], ans:"A" },
+  { n:8, sec:0, q:"The Directive Principles of State Policy (DPSP) were primarily inspired by the Constitution of:", opts:["USA","Canada","Ireland","Australia"], ans:"C" },
+  { n:9, sec:0, q:"Which Article of the Constitution provides for a Uniform Civil Code?", opts:["Article 42","Article 43","Article 44","Article 45"], ans:"C" },
+  { n:10, sec:0, q:"The writ of 'Quo Warranto' is issued when the court finds that:", opts:["A person is illegally detained","A lower court has exceeded its jurisdiction","An office holder is illegally holding a position","A public duty is not being performed"], ans:"C" },
+  { n:11, sec:0, q:"Who presides over a joint sitting of both Houses of Parliament?", opts:["President","Speaker of Lok Sabha","Vice-President","Chief Justice of India"], ans:"B" },
+  { n:12, sec:0, q:"Fundamental Duties were added to the Constitution on the recommendation of which committee?", opts:["Mandal Committee","Swaran Singh Committee","Gadgill Committee","Nehru Committee"], ans:"B" },
+  { n:13, sec:0, q:"In which case did the Supreme Court hold that the Preamble is NOT a part of the Indian Constitution?", opts:["Berubari Union Case","Kesavananda Bharati Case","Minerva Mills Case","Maneka Gandhi Case"], ans:"A" },
+  { n:14, sec:0, q:"Which Article deals with the Fundamental Duty to develop \"Scientific Temper\"?", opts:["Article 51A(e)","Article 51A(g)","Article 51A(h)","Article 51A(i)"], ans:"C" },
+  { n:15, sec:0, q:"On which ground can the President of India be impeached?", opts:["Proved misbehaviour","Incapacity","Violation of the Constitution","Corruption"], ans:"C" },
+
+  // Section II: Jurisprudence
+  { n:16, sec:1, q:"Who defined Jurisprudence as the \"formal science of positive law\"?", opts:["Austin","Holland","Salmond","Bentham"], ans:"B" },
+  { n:17, sec:1, q:"The concept of \"Volksgeist\" (Spirit of the People) is associated with which jurist?", opts:["John Austin","Friedrich Carl von Savigny","Roscoe Pound","Hans Kelsen"], ans:"B" },
+  { n:18, sec:1, q:"Who propounded the theory of \"Social Engineering\"?", opts:["Salmond","Ehrlich","Roscoe Pound","Duguit"], ans:"C" },
+  { n:19, sec:1, q:"According to John Austin, law is the command of a:", opts:["Judge","God","Sovereign","Society"], ans:"C" },
+  { n:20, sec:1, q:"The \"Grundnorm\" theory is the contribution of:", opts:["H.L.A. Hart","Hans Kelsen","Jeremy Bentham","Savigny"], ans:"B" },
+  { n:21, sec:1, q:"Who called Natural Law \"nonsense upon stilts\"?", opts:["Austin","Bentham","Kelsen","Pound"], ans:"B" },
+  { n:22, sec:1, q:"\"Law is found, not made\" is a belief held by the:", opts:["Analytical School","Historical School","Sociological School","Realist School"], ans:"B" },
+  { n:23, sec:1, q:"The distinction between \"Static\" and \"Progressive\" societies was drawn by:", opts:["Sir Henry Maine","HLA Hart","Savigny","Roscoe Pound"], ans:"A" },
+  { n:24, sec:1, q:"In Hohfeld's analysis, the correlative of a \"Right\" is:", opts:["Liberty","Duty","Power","Immunity"], ans:"B" },
+  { n:25, sec:1, q:"Legal Personality is granted to which of the following?", opts:["A dead body","An idol","An animal","Only living humans"], ans:"B" },
+
+  // Section III: Law of Torts
+  { n:26, sec:2, q:"The primary goal of Tort law is:", opts:["Punishment","Deterrence","Compensation","Imprisonment"], ans:"C" },
+  { n:27, sec:2, q:"Damages in Tort are generally:", opts:["Liquidated","Unliquidated","Fixed by statute","Not awarded"], ans:"B" },
+  { n:28, sec:2, q:"The maxim \"Volenti non fit injuria\" means:", opts:["Where there is a right, there is a remedy","No legal injury is done to one who consents","Damage without legal injury is not actionable","The thing speaks for itself"], ans:"B" },
+  { n:29, sec:2, q:"Which landmark case established the \"Neighbour Principle\" in negligence?", opts:["Rylands v. Fletcher","Donoghue v. Stevenson","Bird v. Jones","M.C. Mehta v. Union of India"], ans:"B" },
+  { n:30, sec:2, q:"Strict Liability was first laid down in which case?", opts:["M.C. Mehta v. Union of India","Rylands v. Fletcher","Donoghue v. Stevenson","St. Helen Smelting Co."], ans:"B" },
+  { n:31, sec:2, q:"\"Trespass to Land\" is actionable:", opts:["Only if damage is proven","Per se (without proof of damage)","Only if it is repeated","Only if there is criminal intent"], ans:"B" },
+  { n:32, sec:2, q:"Unlawful and indirect interference with a person's enjoyment of land is called:", opts:["Trespass","Nuisance","Conversion","Battery"], ans:"B" },
+  { n:33, sec:2, q:"In the case of Bird v. Jones, it was established that False Imprisonment requires:", opts:["Partial restraint","Total restraint","Physical injury","Intention to kill"], ans:"B" },
+  { n:34, sec:2, q:"Defamation in a permanent form (like a newspaper cartoon) is called:", opts:["Slander","Libel","Innuendo","Battery"], ans:"B" },
+  { n:35, sec:2, q:"Which doctrine protects a \"rescuer\" from the defence of Volenti non fit injuria?", opts:["Eggshell Skull Rule","Rescue Doctrine","Last Opportunity Rule","Vicarious Liability"], ans:"B" },
+  { n:36, sec:2, q:"The \"Absolute Liability\" rule in India was evolved by Justice P.N. Bhagwati in:", opts:["Rylands v. Fletcher","M.C. Mehta v. Union of India","Donoghue v. Stevenson","Kasturilal v. State of UP"], ans:"B" },
+  { n:37, sec:2, q:"\"Nervous Shock\" relates to which kind of injury?", opts:["Property damage","Mental/Psychiatric injury","Bodily battery","Financial loss"], ans:"B" },
+  { n:38, sec:2, q:"Which of the following is NOT a valid defence to Strict Liability?", opts:["Act of God","Statutory Authority","Plaintiff's own fault","Mistake of fact"], ans:"D" },
+  { n:39, sec:2, q:"A deepfake video misrepresenting a public figure is a modern example of:", opts:["Nuisance","Defamation","Trespass","Negligence"], ans:"B" },
+  { n:40, sec:2, q:"Ubi jus ibi remedium means:", opts:["For every wrong there is a crime","Where there is a right, there is a remedy","No right without a sovereign","Law is above all"], ans:"B" },
+
+  // Section IV: Law of Contract
+  { n:41, sec:3, q:"According to Section 2(h) of the Indian Contract Act, a contract is:", opts:["An agreement between two people","An agreement enforceable by law","A promise to do something","A signed document"], ans:"B" },
+  { n:42, sec:3, q:"An agreement without consideration is called:", opts:["Consensus ad idem","Nudum Pactum","Voidable","Uberrimae fidei"], ans:"B" },
+  { n:43, sec:3, q:"A minor's agreement is:", opts:["Voidable","Void ab initio","Valid at the option of the minor","Enforceable for luxury items"], ans:"B" },
+  { n:44, sec:3, q:"In which case was it held that \"Silence does not amount to acceptance\"?", opts:["Carlill v. Carbolic Smoke Ball Co.","Lalman Shukla v. Gauri Dutt","Felthouse v. Bindley","Harvey v. Facey"], ans:"C" },
+  { n:45, sec:3, q:"A \"General Offer\" can be accepted by:", opts:["Only the person to whom it is made","Anyone who performs the conditions of the offer","Only by the government","No one until it is signed"], ans:"B" },
+  { n:46, sec:3, q:"Goods displayed in a shop window with price tags are:", opts:["An Offer","An Invitation to Offer","A Counter Offer","A Valid Contract"], ans:"B" },
+  { n:47, sec:3, q:"Free consent is NOT present when an agreement is caused by:", opts:["Coercion","Undue Influence","Fraud","All of the above"], ans:"D" },
+  { n:48, sec:3, q:"A contract based on an uncertain future event is a:", opts:["Wagering Contract","Contingent Contract","Void Contract","Illegal Contract"], ans:"B" },
+  { n:49, sec:3, q:"Communication of an offer is complete when:", opts:["The letter is posted","It comes to the knowledge of the person to whom it is made","The offeree reads it","The proposer signs it"], ans:"B" },
+  { n:50, sec:3, q:"\"Quantum Meruit\" means:", opts:["As much as is earned","Something for something","The thing speaks for itself","To be informed"], ans:"A" },
+
+  // Section V: Family Law
+  { n:51, sec:4, q:"Ceremonies for a Hindu marriage are provided under which section of the Hindu Marriage Act, 1955?", opts:["Section 5","Section 7","Section 11","Section 13"], ans:"B" },
+  { n:52, sec:4, q:"Divorce by \"Mutual Consent\" under Hindu law is found in:", opts:["Section 13(1)","Section 13A","Section 13B","Section 14"], ans:"C" },
+  { n:53, sec:4, q:"Under Muslim Law, \"Tuhr\" refers to:", opts:["Period of menstruation","Period of Iddat","Period of Purity","Period of marriage"], ans:"C" },
+  { n:54, sec:4, q:"\"Prompt Dower\" is also known as:", opts:["Muajjal","Muwajjal","Musamma","Izl"], ans:"A" },
+  { n:55, sec:4, q:"A marriage of a Muslim with a woman prohibited by reason of \"affinity\" is:", opts:["Valid","Irregular","Void","Voidable"], ans:"C" },
+  { n:56, sec:4, q:"\"Non-resumption of cohabitation\" after a decree of judicial separation is a ground for divorce after a minimum period of:", opts:["6 Months","1 Year","18 Months","2 Years"], ans:"B" },
+  { n:57, sec:4, q:"Who gave the dissenting opinion in the Triple Talaq case (Shayara Bano v. Union of India)?", opts:["Justice Nariman","Justice Khehar","Justice Nazeer","Justice Joseph"], ans:"C" },
+  { n:58, sec:4, q:"A marriage with a woman before the completion of her Iddat is:", opts:["Void","Irregular","Valid","Voidable"], ans:"B" },
+  { n:59, sec:4, q:"In which case was it held that the registration of marriages for all citizens should be made compulsory?", opts:["Seema v. Ashwani Kumar","Mohini Jain v. State of Karnataka","Shah Bano Case","Sarla Mudgal Case"], ans:"A" },
+  { n:60, sec:4, q:"The guardian of property in Muslim Law is called:", opts:["Wali","Wasi","Wilaya","Mutawalli"], ans:"C" },
+
+  // Section VI: Advanced Legal Concepts
+  { n:61, sec:5, q:"Who is considered the \"Father of International Law\"?", opts:["Oppenheim","Hugo Grotius","Hans Kelsen","Jeremy Bentham"], ans:"B" },
+  { n:62, sec:5, q:"The term \"International Law\" was coined by:", opts:["Hugo Grotius","Jeremy Bentham","John Austin","Holland"], ans:"B" },
+  { n:63, sec:5, q:"The International Court of Justice (ICJ) consists of how many judges?", opts:["9","10","15","20"], ans:"C" },
+  { n:64, sec:5, q:"\"Pacta Sunt Servanda\" means:", opts:["Agreements must be kept","Law of the land","Power of the state","Rights of citizens"], ans:"A" },
+  { n:65, sec:5, q:"Which organ of the United Nations has suspended its operations since 1994?", opts:["Economic and Social Council","Trusteeship Council","Secretariat","ICJ"], ans:"B" },
+  { n:66, sec:5, q:"What is the maximum interval permitted between two sessions of Parliament?", opts:["3 months","4 months","5 months","6 months"], ans:"D" },
+  { n:67, sec:5, q:"The \"Eggshell Skull Rule\" means:", opts:["The defendant is only liable for visible injuries","The defendant must take the victim as he finds them","The plaintiff cannot claim if they are weak","Damages are fixed regardless of the victim's health"], ans:"B" },
+  { n:68, sec:5, q:"Which case introduced the \"Curative Petition\" in India?", opts:["Rupa Ashok Hurra v. Ashok Hurra","Vishaka v. State of Rajasthan","Maneka Gandhi v. Union of India","Kesavananda Bharati"], ans:"A" },
+  { n:69, sec:5, q:"The principle of \"Res Ipsa Loquitur\" means:", opts:["The thing speaks for itself","To be informed of the cause","No one can be a judge in their own cause","Where there is no right, there is no remedy"], ans:"A" },
+  { n:70, sec:5, q:"Who was the first Attorney General of India?", opts:["Soli Sorabjee","M.C. Setalvad","C.K. Daphtary","K.K. Venugopal"], ans:"B" },
+  { n:71, sec:5, q:"Separation of Powers was formulated by:", opts:["Dicey","Montesquieu","Plato","Aristotle"], ans:"B" },
+  { n:72, sec:5, q:"Which schedule of the Constitution deals with the \"Anti-Defection\" law?", opts:["8th Schedule","9th Schedule","10th Schedule","11th Schedule"], ans:"C" },
+  { n:73, sec:5, q:"De minimis non curat lex means:", opts:["Law does not care about trifles","Ignorance of law is no excuse","The law is supreme","Justice delayed is justice denied"], ans:"A" },
+  { n:74, sec:5, q:"The \"Doctrine of Lapse\" was devised by:", opts:["Lord Curzon","Lord Dalhousie","Lord Canning","Lord Wellesley"], ans:"B" },
+  { n:75, sec:5, q:"\"Satyameva Jayate\" is taken from:", opts:["Rigveda","Mundaka Upanishad","Ramayana","Mahabharata"], ans:"B" },
+
+  // Section VII: Current Legal Developments
+  { n:76, sec:6, q:"Who is the current Chief Justice of India (as per 2024 sources)?", opts:["Justice U.U. Lalit","Justice D.Y. Chandrachud","Justice Sanjiv Khanna","Justice Hima Kohli"], ans:"B" },
+  { n:77, sec:6, q:"The \"Grok\" AI chatbot is associated with:", opts:["Google","Meta","X (formerly Twitter)","Microsoft"], ans:"C" },
+  { n:78, sec:6, q:"Which city is being developed as India's first \"AI City\"?", opts:["Hyderabad","Bengaluru","Lucknow","Faridabad"], ans:"C" },
+  { n:79, sec:6, q:"The Bharatiya Nyaya Sanhita (BNS) has replaced which act?", opts:["Indian Evidence Act","Indian Penal Code","Code of Criminal Procedure","Contract Act"], ans:"B" },
+  { n:80, sec:6, q:"On what day did the Bharatiya Nyaya Sanhita receive Presidential Assent?", opts:["25th November, 2023","21st December, 2023","25th December, 2023","1st January, 2024"], ans:"C" },
+  { n:81, sec:6, q:"Which section of the IPC dealing with \"Sedition\" was removed in the BNS?", opts:["Section 124A","Section 302","Section 376","Section 420"], ans:"A" },
+  { n:82, sec:6, q:"The 103rd Constitutional Amendment introduced reservation for:", opts:["OBCs","SC/STs","EWS (Economically Weaker Sections)","Women in Parliament"], ans:"C" },
+  { n:83, sec:6, q:"The Digital Personal Data Protection Act was passed in which year?", opts:["2021","2022","2023","2024"], ans:"C" },
+  { n:84, sec:6, q:"Who is the author of the book \"Wings of Fire\"?", opts:["Mahatma Gandhi","Jawaharlal Nehru","Dr. A.P.J. Abdul Kalam","B.R. Ambedkar"], ans:"C" },
+  { n:85, sec:6, q:"The \"NITI Aayog\" replaced which previous body?", opts:["Finance Commission","Planning Commission","Law Commission","Human Rights Commission"], ans:"B" },
+  { n:86, sec:6, q:"Which country is known as the \"Rainbow Nation\"?", opts:["India","Brazil","South Africa","USA"], ans:"C" },
+  { n:87, sec:6, q:"The chemical symbol for Gold is:", opts:["Ag","Fe","Au","Cu"], ans:"C" },
+  { n:88, sec:6, q:"Who is the author of \"Pride and Prejudice\"?", opts:["Charlotte Brontë","Jane Austen","Mary Shelley","Emily Brontë"], ans:"B" },
+  { n:89, sec:6, q:"\"Kalaripayattu\" is a traditional martial art of which state?", opts:["Tamil Nadu","Kerala","Karnataka","Andhra Pradesh"], ans:"B" },
+  { n:90, sec:6, q:"The World Environment Day is celebrated every year on:", opts:["5th June","21st June","22nd April","10th December"], ans:"A" },
+
+  // Section VIII: Legal Reasoning
+  { n:91, sec:7, q:"If A says to B, \"I will sell you my car for 2 lakhs if you don't hear from me by Sunday,\" and B stays silent, is there a contract?", opts:["Yes, silence is acceptance","No, silence is not acceptance","Yes, if Sunday passes","Only if A sends a second letter"], ans:"B" },
+  { n:92, sec:7, q:"A neighbour plays extremely loud music at 2 AM every night. This is:", opts:["Trespass","Nuisance","Defamation","False Imprisonment"], ans:"B" },
+  { n:93, sec:7, q:"A doctor operates on a patient and accidentally leaves a surgical sponge inside. This is a case of:", opts:["Battery","Res Ipsa Loquitur (Negligence)","Volenti non fit injuria","No liability"], ans:"B" },
+  { n:94, sec:7, q:"A person enters another's land by mistake, thinking it is their own. This is:", opts:["Not Trespass","Trespass","Nuisance","Negligence"], ans:"B" },
+  { n:95, sec:7, q:"A minor takes a loan and refuses to pay it back. The contract is:", opts:["Valid","Voidable","Void","Illegal"], ans:"C" },
+  { n:96, sec:7, q:"A Guru induces a Chela to gift all his property to the Guru for \"spiritual benefit.\" This is:", opts:["Coercion","Undue Influence","Fraud","Valid Gift"], ans:"B" },
+  { n:97, sec:7, q:"A man blocks only one path of a person, but other paths are open for them to leave. This is:", opts:["False Imprisonment","Not False Imprisonment","Trespass","Assault"], ans:"B" },
+  { n:98, sec:7, q:"A person publishes a fake news story in a newspaper harming another's reputation. This is:", opts:["Libel","Slander","Nuisance","Trespass"], ans:"A" },
+  { n:99, sec:7, q:"A contract made under a \"Mutual Mistake of Fact\" is:", opts:["Valid","Voidable","Void","Unenforceable"], ans:"C" },
+  { n:100, sec:7, q:"The \"Neighbour Principle\" applies to which tort?", opts:["Defamation","Negligence","Nuisance","False Imprisonment"], ans:"B" }
+];
+
+const LABELS = ['A','B','C','D'];
+
+// ============================================================
+// STATE
+// ============================================================
+let userName = '', userEmail = '';
+let answers = new Array(101).fill(null); // 1-indexed
+let currentQ = 1;
+let timerInterval = null;
+let totalSeconds = 90 * 60;
+let examStarted = false;
+
+// ============================================================
+// HELPERS
+// ============================================================
+function getSectionForQ(n) { return SECTIONS.find(s => n >= s.range[0] && n <= s.range[1]); }
+function getLiveStats() {
+  let correct=0, wrong=0, attempted=0;
+  for (let i=1;i<=100;i++) {
+    const q = QUESTIONS[i-1];
+    if (answers[i] !== null) {
+      attempted++;
+      if (answers[i] === q.ans) correct++;
+      else wrong++;
+    }
+  }
+  const score = correct * 1 - wrong * 0.25;
+  return { correct, wrong, attempted, skipped: 100-attempted, score };
+}
+
+// ============================================================
+// LANDING → INSTRUCTIONS
+// ============================================================
+function startInstructions() {
+  const name = document.getElementById('inp-name').value.trim();
+  const email = document.getElementById('inp-email').value.trim();
+  if (!name) { alert('Please enter your full name.'); return; }
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+  userName = name; userEmail = email;
+  showScreen('screen-instructions');
+}
+
+// ============================================================
+// INSTRUCTIONS → EXAM
+// ============================================================
+function startExam() {
+  document.getElementById('hdr-candidate').textContent = `Candidate: ${userName}`;
+  showScreen('screen-exam');
+  buildSectionTabs();
+  buildPalette();
+  renderQuestion(1);
+  startTimer();
+  examStarted = true;
+}
+
+function buildSectionTabs() {
+  const wrap = document.getElementById('section-tabs');
+  wrap.innerHTML = '';
+  SECTIONS.forEach((s, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'section-tab' + (i === 0 ? ' active' : '');
+    btn.textContent = s.short;
+    btn.onclick = () => jumpToSection(s.range[0]);
+    btn.id = `stab-${i}`;
+    wrap.appendChild(btn);
+  });
+}
+
+function jumpToSection(firstQ) {
+  navigateTo(firstQ);
+}
+
+function buildPalette() {
+  const grid = document.getElementById('palette-grid');
+  grid.innerHTML = '';
+  for (let i=1;i<=100;i++) {
+    const btn = document.createElement('button');
+    btn.className = 'pal-btn';
+    btn.textContent = i;
+    btn.id = `pal-${i}`;
+    btn.onclick = () => navigateTo(i);
+    grid.appendChild(btn);
+  }
+}
+
+function updatePalette() {
+  for (let i=1;i<=100;i++) {
+    const btn = document.getElementById(`pal-${i}`);
+    if (!btn) continue;
+    btn.className = 'pal-btn';
+    if (i === currentQ) btn.classList.add('current');
+    else if (answers[i] !== null) btn.classList.add('answered');
+  }
+}
+
+function updateSectionTabs() {
+  const sec = getSectionForQ(currentQ);
+  SECTIONS.forEach((s, i) => {
+    const tab = document.getElementById(`stab-${i}`);
+    if (tab) tab.classList.toggle('active', s.id === sec.id);
+  });
+}
+
+// ============================================================
+// RENDER QUESTION
+// ============================================================
+function renderQuestion(n) {
+  currentQ = n;
+  const q = QUESTIONS[n-1];
+  const sec = getSectionForQ(n);
+  const display = document.getElementById('question-display');
+  display.innerHTML = `
+    <div class="question-card">
+      <div class="q-header">
+        <span class="q-number">Question ${n} of 100</span>
+        <span class="q-section-tag">${sec.name}</span>
+      </div>
+      <div class="q-text">${q.q}</div>
+      <div class="options-grid">
+        ${q.opts.map((opt, i) => `
+          <button class="option-btn ${answers[n] === LABELS[i] ? 'selected' : ''}"
+            onclick="selectAnswer(${n}, '${LABELS[i]}')">
+            <span class="option-label">${LABELS[i]}</span>
+            <span>${opt}</span>
+          </button>
+        `).join('')}
+      </div>
+    </div>
+  `;
+  document.getElementById('btn-prev').disabled = n === 1;
+  document.getElementById('btn-next').disabled = n === 100;
+  updatePalette();
+  updateSectionTabs();
+  updateLiveScore();
+}
+
+function selectAnswer(n, label) {
+  answers[n] = label;
+  renderQuestion(n);
+}
+
+function clearAnswer() {
+  answers[currentQ] = null;
+  renderQuestion(currentQ);
+}
+
+function navigate(dir) {
+  const next = currentQ + dir;
+  if (next >= 1 && next <= 100) navigateTo(next);
+}
+
+function saveAndNext() {
+  if (currentQ < 100) navigateTo(currentQ + 1);
+  else showSubmitModal();
+}
+
+function navigateTo(n) {
+  currentQ = n;
+  renderQuestion(n);
+  // Scroll palette btn into view
+  const pal = document.getElementById(`pal-${n}`);
+  if (pal) pal.scrollIntoView({ block: 'nearest' });
+}
+
+function updateLiveScore() {
+  const stats = getLiveStats();
+  document.getElementById('live-correct').textContent = stats.correct;
+  document.getElementById('live-wrong').textContent = stats.wrong;
+  document.getElementById('live-score').textContent = stats.score.toFixed(2);
+  document.getElementById('live-attempted').textContent = stats.attempted;
+}
+
+// ============================================================
+// TIMER
+// ============================================================
+function startTimer() {
+  timerInterval = setInterval(() => {
+    totalSeconds--;
+    const m = Math.floor(totalSeconds / 60);
+    const s = totalSeconds % 60;
+    const tbox = document.getElementById('timer-display');
+    document.getElementById('timer-text').textContent =
+      String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+    tbox.className = 'timer-box';
+    if (totalSeconds <= 600) tbox.classList.add('warning');
+    if (totalSeconds <= 120) tbox.classList.remove('warning'), tbox.classList.add('danger');
+    if (totalSeconds <= 0) {
+      clearInterval(timerInterval);
+      submitExam();
+    }
+  }, 1000);
+}
+
+// ============================================================
+// SUBMIT MODAL
+// ============================================================
+function showSubmitModal() {
+  const stats = getLiveStats();
+  document.getElementById('mod-correct').textContent = stats.correct;
+  document.getElementById('mod-wrong').textContent = stats.wrong;
+  document.getElementById('mod-skip').textContent = stats.skipped;
+  document.getElementById('mod-score').textContent = stats.score.toFixed(2);
+  document.getElementById('submit-modal').classList.add('show');
+}
+function closeSubmitModal() {
+  document.getElementById('submit-modal').classList.remove('show');
+}
+
+// ============================================================
+// SUBMIT → RESULTS
+// ============================================================
+function submitExam() {
+  clearInterval(timerInterval);
+  closeSubmitModal();
+  buildResults();
+  showScreen('screen-results');
+}
+
+function buildResults() {
+  const stats = getLiveStats();
+  const pct = Math.max(0, (stats.score / 100) * 100);
+
+  // Candidate info
+  document.getElementById('res-candidate').textContent =
+    `${userName}  ·  ${userEmail}  ·  ${new Date().toLocaleString()}`;
+
+  // Big score grid
+  const bgGrid = document.getElementById('score-big-grid');
+  bgGrid.innerHTML = `
+    <div class="score-big-cell"><div class="score-big-val text-gold">${stats.score.toFixed(2)}</div><div class="score-big-lbl">Final Score</div></div>
+    <div class="score-big-cell"><div class="score-big-val text-green">${stats.correct}</div><div class="score-big-lbl">Correct</div></div>
+    <div class="score-big-cell"><div class="score-big-val text-red">${stats.wrong}</div><div class="score-big-lbl">Wrong</div></div>
+    <div class="score-big-cell"><div class="score-big-val">${stats.skipped}</div><div class="score-big-lbl">Skipped</div></div>
+  `;
+
+  // Percentile bar
+  setTimeout(() => {
+    document.getElementById('perc-bar').style.width = Math.max(0, pct) + '%';
+    document.getElementById('perc-label').textContent = `Score: ${pct.toFixed(1)}%`;
+  }, 300);
+
+  // Verdict
+  let verdictClass, verdictText;
+  if (pct >= 80) { verdictClass = 'verdict-excellent'; verdictText = '🏆 Outstanding Performance'; }
+  else if (pct >= 60) { verdictClass = 'verdict-good'; verdictText = '✅ Good Performance'; }
+  else if (pct >= 40) { verdictClass = 'verdict-average'; verdictText = '📈 Average — Needs Improvement'; }
+  else { verdictClass = 'verdict-below'; verdictText = '⚠ Below Average — Intensive Revision Needed'; }
+  document.getElementById('verdict-badge-wrap').innerHTML =
+    `<div class="verdict-badge ${verdictClass}">${verdictText}</div>`;
+
+  // Section analysis
+  const secAnal = document.getElementById('section-analysis');
+  secAnal.innerHTML = '';
+  SECTIONS.forEach(sec => {
+    let sc=0, wr=0, att=0;
+    const total = sec.range[1] - sec.range[0] + 1;
+    for (let i=sec.range[0]; i<=sec.range[1]; i++) {
+      const q = QUESTIONS[i-1];
+      if (answers[i] !== null) {
+        att++;
+        if (answers[i] === q.ans) sc++;
+        else wr++;
+      }
+    }
+    const secScore = sc - wr*0.25;
+    const acc = att > 0 ? Math.round((sc/att)*100) : 0;
+    const barW = Math.round((secScore / total)*100);
+    secAnal.innerHTML += `
+      <div class="section-row">
+        <div>${sec.name}</div>
+        <div class="text-gold">${secScore.toFixed(2)}</div>
+        <div class="text-green">${sc}</div>
+        <div class="text-red">${wr}</div>
+        <div>
+          <div class="mini-bar"><div class="mini-bar-fill" style="width:${Math.max(0,barW)}%"></div></div>
+          <div style="font-size:0.65rem;font-family:'JetBrains Mono',monospace;color:rgba(212,205,184,0.4);margin-top:2px">${acc}%</div>
+        </div>
+      </div>
+    `;
+  });
+
+  // Personalised feedback
+  const weakSecs = [];
+  SECTIONS.forEach(sec => {
+    let sc=0, att=0;
+    for (let i=sec.range[0]; i<=sec.range[1]; i++) {
+      const q=QUESTIONS[i-1];
+      if (answers[i]!==null) { att++; if(answers[i]===q.ans) sc++; }
+    }
+    const acc = att>0 ? sc/att : 0;
+    if (acc < 0.5) weakSecs.push(sec.name);
+  });
+
+  let feedbackText = `You attempted ${stats.attempted} out of 100 questions and scored <strong>${stats.score.toFixed(2)}</strong> out of 100. `;
+  if (pct >= 80) feedbackText += `Exceptional performance! Your command over legal concepts is commendable. Focus on maintaining accuracy in your weaker sections to achieve a perfect score.`;
+  else if (pct >= 60) feedbackText += `Good effort! You have a solid grasp of core legal principles. With targeted revision, you can push into the top tier.`;
+  else if (pct >= 40) feedbackText += `You are on the right track, but need to strengthen your foundational knowledge. Regular practice of previous year questions will help significantly.`;
+  else feedbackText += `This is your baseline — don't be discouraged. Every expert was once a beginner. A structured study plan covering all sections systematically is recommended.`;
+
+  if (weakSecs.length > 0) {
+    feedbackText += ` <strong>Priority revision areas:</strong> ${weakSecs.join(', ')}.`;
+  }
+  feedbackText += ` Negative marking affected your score by <strong>${(stats.wrong * 0.25).toFixed(2)} marks</strong> — consider attempting only questions where you are reasonably confident.`;
+
+  document.getElementById('feedback-text').innerHTML = feedbackText;
+
+  // Answer review
+  buildReviewList();
+}
+
+function buildReviewList() {
+  const list = document.getElementById('review-list');
+  list.innerHTML = '';
+  for (let i=1; i<=100; i++) {
+    const q = QUESTIONS[i-1];
+    const sec = getSectionForQ(i);
+    const userAns = answers[i];
+    let rowClass, statusClass;
+    if (userAns === null) { rowClass = 'skip-row'; statusClass = 'skip'; }
+    else if (userAns === q.ans) { rowClass = 'correct-row'; statusClass = 'correct'; }
+    else { rowClass = 'wrong-row'; statusClass = 'wrong'; }
+
+    const answerLine = userAns === null
+      ? `<span class="review-skipped">Not Attempted</span> <span class="review-correct">· Correct: (${q.ans}) ${q.opts[LABELS.indexOf(q.ans)]}</span>`
+      : userAns === q.ans
+        ? `<span class="review-your match">Your Answer: (${userAns}) ${q.opts[LABELS.indexOf(userAns)]} ✓</span>`
+        : `<span class="review-your">Your Answer: (${userAns}) ${q.opts[LABELS.indexOf(userAns)]} ✗</span> <span class="review-correct">· Correct: (${q.ans}) ${q.opts[LABELS.indexOf(q.ans)]}</span>`;
+
+    const div = document.createElement('div');
+    div.className = `review-item ${rowClass}`;
+    div.dataset.status = statusClass;
+    div.innerHTML = `
+      <div class="review-q-num">Q${i} · ${sec.name}</div>
+      <div class="review-q-text">${q.q}</div>
+      <div class="review-answers">${answerLine}</div>
+    `;
+    list.appendChild(div);
+  }
+}
+
+function filterReview(type, btn) {
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.review-item').forEach(item => {
+    if (type === 'all' || item.dataset.status === type) item.classList.remove('hidden');
+    else item.classList.add('hidden');
+  });
+}
+
+// ============================================================
+// SCREEN MANAGEMENT
+// ============================================================
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function retakeTest() {
+  answers = new Array(101).fill(null);
+  currentQ = 1;
+  totalSeconds = 90 * 60;
+  examStarted = false;
+  if (timerInterval) clearInterval(timerInterval);
+  document.getElementById('inp-name').value = '';
+  document.getElementById('inp-email').value = '';
+  showScreen('screen-landing');
+}
+</script>
+</body>
+</html>
